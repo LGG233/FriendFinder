@@ -1,0 +1,30 @@
+// ===============================================================================
+// Link routes to data source that stores the completed survey information.
+// ===============================================================================
+
+var friendsData = require("../data/friends");
+
+// ===============================================================================
+// API ROUTING
+// ===============================================================================
+
+module.exports = function (app) {
+    // API GET Requests - what to do when user visits the API link (URL returns JSON of the data in the friends table)
+    // ---------------------------------------------------------------------------
+
+    app.get("/api/friends", function (req, res) {
+        res.json(friends);
+    });
+
+    // API POST Requests - what to do when user submits form, that is, submits data to the server.
+    // -  JSON is pushed to the appropriate JavaScript array
+    // -  JSON is printed to the console
+    // ---------------------------------------------------------------------------
+    app.post("/api/friends", function (req, res) {
+        var new_friend = req.body;
+        console.log(new_friend);
+        friends.push(new_friend);
+        // res.json(new_friend);
+    });
+};
+
