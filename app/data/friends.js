@@ -1,7 +1,6 @@
 var friendArray = [
     {
         "name": "Ahmed",
-        "email": "ahmed@emal.com",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [
             5,
@@ -18,7 +17,6 @@ var friendArray = [
     },
     {
         "name": "Lance",
-        "email": "lance@email.com",
         "photo": "https://pbs.twimg.com/profile_images/589125210684706819/Fwcz-Hw3.jpg",
         "scores": [
             4,

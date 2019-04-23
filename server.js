@@ -18,8 +18,8 @@ app.use(express.json());
 
 // Reaches out to load routing paths 
 // =============================================================
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 
 
