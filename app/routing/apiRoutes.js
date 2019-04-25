@@ -38,7 +38,6 @@ module.exports = function (app) {
                 friendMatch.name = friends[i].name;
                 friendMatch.photo = friends[i].photo;
                 friendMatch.scoreDifference = totalDifference
-                // console.log(friendMatch.scoreDifference);
             }
         }
         friends.push(new_friend);
