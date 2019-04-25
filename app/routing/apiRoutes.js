@@ -33,11 +33,11 @@ module.exports = function (app) {
             totalDifference = 0;
             for (var j = 0; j < friends[i].scores[j]; j++) {
                 totalDifference += Math.abs(parseInt(friendScores[j]) - (friends[i].scores[j]));
-                if (totalDifference <= friendMatch.scoreDifference) {
-                    friendMatch.name = friends[i].name;
-                    friendMatch.photo = friends[i].photo;
-                    friendMatch.scoreDifference = totalDifference
-                }
+            }
+            if (totalDifference <= friendMatch.scoreDifference) {
+                friendMatch.name = friends[i].name;
+                friendMatch.photo = friends[i].photo;
+                friendMatch.scoreDifference = totalDifference
                 // console.log(friendMatch.scoreDifference);
             }
         }
