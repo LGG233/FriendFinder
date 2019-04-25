@@ -14,13 +14,6 @@ module.exports = function (app) {
 
     app.get("/api/friends", function (req, res) {
         res.json(friends);
-        for (var i = 0; i < friends.length; i++) {
-            console.log(friends[i].name);
-            console.log(friends[i].photo);
-            for (var j = 0; j < friends[i].scores.length; j++) {
-                console.log("Answer to Question " + (j + 1) + ":" + friends[i].scores[j]);
-            }
-        }
     });
 
     // API POST Requests - what to do when user submits form, that is, submits data to the server.
@@ -29,46 +22,28 @@ module.exports = function (app) {
     // ---------------------------------------------------------------------------
     app.post("/api/friends", function (req, res) {
         var new_friend = req.body;
-        var lastUserArray = [];
-        console.log(new_friend);
-        for (var i = 0; i < new_friend.scores.length; i++) {
-            lastUserArray.push(new_friend.scores[i]);
-            // console.log(new_friend.scores[i])
-        }
+        var friendScores = new_friend.scores
+        var friendMatch = {
+            name: "",
+            photo: "",
+            scoreDifference: 1000
+        };
+        var totalDifference = 0;
         for (var i = 0; i < friends.length; i++) {
-            console.log(friends[i].name);
-            // console.log(friends[i].photo);
-            for (var j = 0; j < friends[i].scores.length; j++) {
-                console.log("Answer to Question " + (j + 1) + ":" + friends[i].scores[j]);
+            totalDifference = 0;
+            for (var j = 0; j < friends[i].scores[j]; j++) {
+                totalDifference += Math.abs(parseInt(friendScores[j]) - (friends[i].scores[j]));
+                if (totalDifference <= friendMatch.scoreDifference) {
+                    friendMatch.name = friends[i].name;
+                    friendMatch.photo = friends[i].photo;
+                    friendMatch.scoreDifference = totalDifference
+                }
+                // console.log(friendMatch.scoreDifference);
             }
         }
-        console.log(lastUserArray);
         friends.push(new_friend);
-        res.json(new_friend);
+        res.json(friendMatch);
     });
 };
 
-// findFriend();
-// var userResults = [];
-// var oldResults = [];
 
-function userAnswers(new_friend) {
-    console.log("2" + new_friend)
-}
-
-// function findFriend() {
-
-    //     var lastUser = friendArray[friendArray.length - 1];
-    //     var lastUserArray = [];
-    //     for (h = 0; h < lastUser.scores.length; h++) {
-    //         var dataPoint = lastUser.scores[h]
-    //         lastUserArray.push(dataPoint);
-    //     }
-    //     console.log(lastUserArray);
-    //     var allUsersArray = [];
-    //     for (var i = 0; i, friendArray.length; i++) {
-    //         var dataPoint = friendArray[i].scores;
-    //         allUsersArray.push(dataPoint);
-    //     }
-    //     console.log(allUsersArray)
-    // }
