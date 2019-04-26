@@ -16,3 +16,8 @@ button.center {
     display: inline-block;
     margin: 20px;
 }
+
+#match-img {
+    height: 200px;
+    width: auto;
+}
