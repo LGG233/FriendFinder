@@ -33,10 +33,7 @@ module.exports = function (app) {
             totalDifference = 0;
             for (var j = 0; j < 10; j++) {
                 totalDifference += Math.abs(parseInt(friendScores[j]) - (friends[i].scores[j]));
-                console.log("within first for loop" + totalDifference)
-                // friends[i].scores[j].length
             }
-            console.log("after first for loop"+ totalDifference);
             if (totalDifference <= friendMatch.scoreDifference) {
                 friendMatch.name = friends[i].name;
                 friendMatch.photo = friends[i].photo;
@@ -47,5 +44,3 @@ module.exports = function (app) {
         res.json(friendMatch);
     });
 };
-
-
